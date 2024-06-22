@@ -16,7 +16,7 @@ const questions = [
 
 const Home = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [progress, setProgress] = useState(0);
+  // const [progress, setProgress] = useState(0);
   const [sliderValues, setSliderValues] = useState(Array(questions.length).fill(0));
   const [isChanging, setIsChanging] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -29,15 +29,17 @@ const Home = () => {
       newValues[currentQuestion] = value;
       return newValues;
     });
+    console.log("Slider input value are:", sliderValues);
     setIsChanging(true);
     setTimeout(() => {
       if (currentQuestion < questions.length - 1) {
-        setProgress((prevProgress) => prevProgress + 100 / questions.length);
+        // setProgress((prevProgress) => prevProgress + 100 / questions.length);
         setCurrentQuestion((prevQuestion) => prevQuestion + 1);
       }
       setIsChanging(false);
     }, 500);
-    console.log("Slider input value are:", sliderValues)
+    
+    // console.log("Progress is:",progress);
   };
 
   const handlePrevClick = () => {
@@ -46,7 +48,7 @@ const Home = () => {
       setIsChanging(true);
       setTimeout(() => {
         setCurrentQuestion((prevQuestion) => prevQuestion - 1);
-        setProgress((prevProgress) => prevProgress - (100 / questions.length));
+        // setProgress((prevProgress) => prevProgress - (100 / questions.length));
         setIsChanging(false);
       }, 500);
 
@@ -59,7 +61,7 @@ const Home = () => {
       setIsChanging(true);
       setTimeout(() => {
         setCurrentQuestion((prevQuestion) => prevQuestion + 1);
-        setProgress((prevProgress) => prevProgress + (100 / questions.length));
+        // setProgress((prevProgress) => prevProgress + (100 / questions.length));
         setIsChanging(false);
       }, 500);
     }
